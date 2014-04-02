@@ -1,0 +1,47 @@
+#!/bin/bash
+
+set -e
+
+# generate a password for root.
+ROOT_PASSWORD=$(pwgen -c -n -1 12)
+echo "root:$ROOT_PASSWORD" | chpasswd
+echo User: root Password: $ROOT_PASSWORD
+
+# start supervisord
+/usr/bin/supervisord
+
+appStart () {
+	/etc/init.d/openfire start
+	tail -F /usr/share/openfire/logs/info.log
+}
+
+appHelp () {
+	echo "Available options:"
+	echo " app:start          - Start the openfire server (default)"
+	echo " app:help           - Displays the help"
+	echo " [command]          - Execute the specified linux command eg. bash."
+}
+
+case "$1" in
+	app:start)
+		appStart
+		;;
+	app:help)
+		appHelp
+		;;
+	*)
+		if [ -x $1 ]; then
+			$1
+		else
+			prog=$(which $1)
+			if [ -n "${prog}" ] ; then
+				shift 1
+				$prog $@
+			else
+				appHelp
+			fi
+		fi
+		;;
+esac
+
+exit 0

@@ -33,4 +33,5 @@ EXPOSE 7777
 EXPOSE 9090
 EXPOSE 9091
 
-CMD ["/usr/bin/supervisord", "-n"]
+ENTRYPOINT ["/app/init"]
+CMD ["app:start"]
