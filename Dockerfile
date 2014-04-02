@@ -15,11 +15,11 @@ RUN apt-get install -y vim curl wget sudo net-tools pwgen && \
 # image specific
 RUN apt-get install -y mysql-server default-jre-headless && apt-get clean
 
-ADD assets/ /openfire/
-RUN chmod 755 /openfire/setup/install && /openfire/setup/install
+ADD assets/ /app/
+RUN chmod 755 /app/setup/install && /app/setup/install
 
 ADD authorized_keys /root/.ssh/
-RUN mv /openfire/.vimrc /openfire/.bash_aliases /root/
+RUN mv /app/.vimrc /app/.bash_aliases /root/
 RUN chmod 700 /root/.ssh && chmod 600 /root/.ssh/authorized_keys && chown root:root -R /root
 
 EXPOSE 5222
