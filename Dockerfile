@@ -15,7 +15,7 @@ RUN apt-get install -y vim curl wget sudo net-tools pwgen && \
 # image specific
 RUN apt-get install -y mysql-server default-jre-headless && apt-get clean
 
-ADD resources/ /openfire/
+ADD assets/ /openfire/
 RUN chmod 755 /openfire/setup/install && /openfire/setup/install
 
 ADD authorized_keys /root/.ssh/
