@@ -16,5 +16,7 @@ EXPOSE 7777
 EXPOSE 9090
 EXPOSE 9091
 
+VOLUME ["/app/data"]
+
 ENTRYPOINT ["/app/init"]
 CMD ["app:start"]

@@ -10,6 +10,24 @@ echo User: root Password: $ROOT_PASSWORD
 /usr/bin/supervisord
 supervisorctl start sshd
 
+chmod 775 /app/data
+
+mkdir -p /app/data/openfire
+chown -R openfire:openfire /app/data/openfire
+
+# populate default openfire configuration if it does not exist
+if [ ! -d /app/data/openfire/etc ]; then
+	mv /etc/openfire /app/data/openfire/etc
+fi
+rm -rf /etc/openfire
+ln -sf /app/data/openfire/etc /etc/openfire
+
+if [ ! -d /app/data/openfire/lib ]; then
+	mv /var/lib/openfire /app/data/openfire/lib
+fi
+rm -rf /var/lib/openfire
+ln -sf /app/data/openfire/lib /var/lib/openfire
+
 appStart () {
 	echo "Starting openfire..."
 	supervisorctl start openfire >/dev/null
