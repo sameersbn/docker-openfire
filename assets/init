@@ -11,7 +11,8 @@ echo User: root Password: $ROOT_PASSWORD
 supervisorctl start sshd
 
 appStart () {
-	/etc/init.d/openfire start
+	echo "Starting openfire..."
+	supervisorctl start openfire >/dev/null
 	tail -F /usr/share/openfire/logs/info.log
 }
 
