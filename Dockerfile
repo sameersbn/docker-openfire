@@ -1,9 +1,9 @@
-FROM sameersbn/ubuntu:12.04.20140418
+FROM sameersbn/ubuntu:12.04.20140519
 MAINTAINER sameer@damagehead.com
 
 RUN apt-get update && \
 		apt-get install -y openjdk-7-jre && \
-		apt-get clean # 20140418
+		apt-get clean # 20140519
 
 ADD assets/ /app/
 RUN chmod 755 /app/setup/install
