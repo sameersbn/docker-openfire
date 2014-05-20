@@ -52,6 +52,10 @@ sameersbn/openfire:3.9.3
 
 Point your browser to `http://localhost:9090` and follow the setup procedure to complete the installation.
 
+The following video by HAKK5 will help you with the configuration and give you an introduction to openfire and some of its features.
+
+[![Build A Free Jabber Server In 10 Minutes](http://img.youtube.com/vi/ytUB5qJm5HE/0.jpg)](https://www.youtube.com/v/ytUB5qJm5HE?start=246)
+
 # Configuration
 
 ## Data Store
