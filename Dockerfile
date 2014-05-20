@@ -2,7 +2,7 @@ FROM sameersbn/ubuntu:12.04.20140418
 MAINTAINER sameer@damagehead.com
 
 RUN apt-get update && \
-		apt-get install -y default-jre-headless && \
+		apt-get install -y openjdk-7-jre && \
 		apt-get clean # 20140418
 
 ADD assets/ /app/
