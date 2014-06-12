@@ -62,7 +62,8 @@ Volumes can be mounted in docker by specifying the **'-v'** option in the docker
 ```bash
 mkdir /opt/openfire
 docker run --name=openfire -d \
-  -v /opt/openfire:/app/data \
+-p 9090:9090 -p 5222:5222 -p 5223:5223  -p 7777:7777  -p 7070:7070 -p 7443:7443 -p 5229:5229 \
+ -v /opt/openfire:/app/data \
   sameersbn/openfire:3.9.3
 ```
 
