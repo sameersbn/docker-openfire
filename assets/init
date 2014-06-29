@@ -1,9 +1,6 @@
 #!/bin/bash
 set -e
 
-# start supervisord
-/usr/bin/supervisord
-
 chmod 775 /app/data
 
 mkdir -p /app/data/openfire
