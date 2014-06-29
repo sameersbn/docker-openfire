@@ -10,6 +10,7 @@ RUN apt-get update && \
 		apt-get clean # 20140519
 
 ADD init /init
+RUN chmod 755 /init
 
 EXPOSE 3478
 EXPOSE 3479
