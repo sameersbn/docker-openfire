@@ -10,19 +10,3 @@ else
 	rm -rf openfire_${OPENFIRE_VERSION}_all.deb
 fi
 
-cat > /etc/supervisor/conf.d/openfire.conf <<EOF
-[program:openfire]
-priority=20
-directory=/var/lib/openfire
-command=/usr/bin/java
-	-server
-	-DopenfireHome=/usr/share/openfire
-	-Dopenfire.lib.dir=/usr/share/openfire/lib
-	-classpath /usr/share/openfire/lib/startup.jar
-	-jar /usr/share/openfire/lib/startup.jar
-user=openfire
-autostart=false
-autorestart=true
-stdout_logfile=/var/log/supervisor/%(program_name)s.log
-stderr_logfile=/var/log/supervisor/%(program_name)s_error.log
-EOF
