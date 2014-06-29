@@ -1,12 +1,2 @@
 #!/bin/bash
 set -e
-
-OPENFIRE_VERSION=3.9.3
-if [ -f /app/setup/openfire_${OPENFIRE_VERSION}_all.deb ]; then
-	dpkg -i /app/setup/openfire_${OPENFIRE_VERSION}_all.deb
-else
-	wget "http://www.igniterealtime.org/downloadServlet?filename=openfire/openfire_${OPENFIRE_VERSION}_all.deb" -O /tmp/openfire_${OPENFIRE_VERSION}_all.deb
-	dpkg -i /tmp/openfire_${OPENFIRE_VERSION}_all.deb
-	rm -rf openfire_${OPENFIRE_VERSION}_all.deb
-fi
-
