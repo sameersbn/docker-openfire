@@ -9,8 +9,6 @@ ADD assets/ /app/
 RUN chmod 755 /app/setup/install
 RUN /app/setup/install
 
-ADD authorized_keys /root/.ssh/
-
 EXPOSE 3478
 EXPOSE 3479
 EXPOSE 5222

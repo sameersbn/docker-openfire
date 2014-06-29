@@ -7,7 +7,6 @@
 - [Configuration](#configuration)
   - [Data Store](#data-store)
 - [Maintenance](#maintenance)
-  - [SSH Login](#ssh-login)
 - Links
   - [Announcements](https://github.com/sameersbn/docker-openfire/issues/1)
   - [Issues](https://github.com/sameersbn/docker-openfire/issues)
@@ -71,16 +70,6 @@ docker run --name=openfire -d \
 ```
 
 # Maintenance
-
-## SSH Login
-There are two methods to gain root login to the container, the first method is to add your public rsa key to the authorized_keys file and build the image.
-
-The second method is use the dynamically generated password. Every time the container is started a random password is generated using the pwgen tool and assigned to the root user. This password can be fetched from the docker logs.
-
-```bash
-docker logs openfire 2>&1 | grep '^User: ' | tail -n1
-```
-The password is not persistent and changes every time the container is started.
 
 # References
   * http://www.igniterealtime.org/projects/openfire/

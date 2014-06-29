@@ -9,9 +9,6 @@ echo User: root Password: $ROOT_PASSWORD
 # start supervisord
 /usr/bin/supervisord
 
-echo "Starting openssh server..."
-supervisorctl start sshd >/dev/null
-
 chmod 775 /app/data
 
 mkdir -p /app/data/openfire
