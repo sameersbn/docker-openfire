@@ -22,39 +22,6 @@ fi
 rm -rf /var/lib/openfire
 ln -sf /app/data/openfire/lib /var/lib/openfire
 
-appStart () {
-	echo "Starting openfire..."
-	supervisorctl start openfire >/dev/null
-	tail -F /usr/share/openfire/logs/info.log
-}
-
-appHelp () {
-	echo "Available options:"
-	echo " app:start          - Start the openfire server (default)"
-	echo " app:help           - Displays the help"
-	echo " [command]          - Execute the specified linux command eg. bash."
-}
-
-case "$1" in
-	app:start)
-		appStart
-		;;
-	app:help)
-		appHelp
-		;;
-	*)
-		if [ -x $1 ]; then
-			$1
-		else
-			prog=$(which $1)
-			if [ -n "${prog}" ] ; then
-				shift 1
-				$prog $@
-			else
-				appHelp
-			fi
-		fi
-		;;
-esac
-
-exit 0
+echo "Starting openfire..."
+supervisorctl start openfire >/dev/null
+tail -F /usr/share/openfire/logs/info.log

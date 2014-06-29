@@ -22,5 +22,4 @@ EXPOSE 9091
 
 VOLUME ["/app/data"]
 
-ENTRYPOINT ["/app/init"]
-CMD ["app:start"]
+CMD ["/app/init"]
