@@ -6,6 +6,7 @@
 - [Quick Start](#quick-start)
 - [Configuration](#configuration)
   - [Data Store](#data-store)
+- [Upgrading](#upgrading)
 - Links
   - [Announcements](https://github.com/sameersbn/docker-openfire/issues/1)
   - [Issues](https://github.com/sameersbn/docker-openfire/issues)
@@ -66,6 +67,28 @@ mkdir /opt/openfire
 docker run --name=openfire -d \
   -v /opt/openfire:/data \
   sameersbn/openfire:3.9.3
+```
+
+# Upgrading
+
+To upgrade to newer releases, simply follow this 3 step upgrade procedure.
+
+- **Step 1**: Stop the currently running image
+
+```
+docker stop openfire
+```
+
+- **Step 2**: Update the docker image.
+
+```
+docker pull sameersbn/openfire:latest
+```
+
+- **Step 3**: Start the image
+
+```
+docker run -name openfire -d [OPTIONS] sameersbn/openfire:latest
 ```
 
 # References
