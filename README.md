@@ -6,7 +6,6 @@
 - [Quick Start](#quick-start)
 - [Configuration](#configuration)
   - [Data Store](#data-store)
-- [Maintenance](#maintenance)
 - Links
   - [Announcements](https://github.com/sameersbn/docker-openfire/issues/1)
   - [Issues](https://github.com/sameersbn/docker-openfire/issues)
@@ -68,8 +67,6 @@ docker run --name=openfire -d \
   -v /opt/openfire:/data \
   sameersbn/openfire:3.9.3
 ```
-
-# Maintenance
 
 # References
   * http://www.igniterealtime.org/projects/openfire/
