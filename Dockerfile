@@ -9,7 +9,7 @@ RUN apt-get update && \
 		rm -rf openfire_${OPENFIRE_VERSION}_all.deb && \
 		apt-get clean # 20140519
 
-ADD assets/init /app/init
+ADD init /init
 
 EXPOSE 3478
 EXPOSE 3479
@@ -24,4 +24,4 @@ EXPOSE 9091
 
 VOLUME ["/app/data"]
 
-CMD ["/app/init"]
+CMD ["/init"]
