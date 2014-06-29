@@ -4,8 +4,7 @@
     - [Changelog](Changelog.md)
 - [Installation](#installation)
 - [Quick Start](#quick-start)
-- [Configuration](#configuration)
-  - [Data Store](#data-store)
+- [Data Store](#data-store)
 - [Upgrading](#upgrading)
 - Links
   - [Announcements](https://github.com/sameersbn/docker-openfire/issues/1)
@@ -55,9 +54,7 @@ The following video by HAKK5 will help you with the configuration and give you a
 
 [![Build A Free Jabber Server In 10 Minutes](http://img.youtube.com/vi/ytUB5qJm5HE/0.jpg)](https://www.youtube.com/v/ytUB5qJm5HE?start=246)
 
-# Configuration
-
-## Data Store
+# Data Store
 The openfire image is configured to save all configurations and installed plugins at /data. As such we should mount a volume at `/data`
 
 Volumes can be mounted in docker by specifying the **'-v'** option in the docker run command.
