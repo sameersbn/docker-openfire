@@ -22,6 +22,6 @@ EXPOSE 7777
 EXPOSE 9090
 EXPOSE 9091
 
-VOLUME ["/app/data"]
+VOLUME ["/data"]
 
 CMD ["/init"]

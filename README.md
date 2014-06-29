@@ -58,14 +58,14 @@ The following video by HAKK5 will help you with the configuration and give you a
 # Configuration
 
 ## Data Store
-The openfire image is configured to save all configurations and installed plugins at /app/data. As such we should mount a volume at `/app/data`
+The openfire image is configured to save all configurations and installed plugins at /data. As such we should mount a volume at `/data`
 
 Volumes can be mounted in docker by specifying the **'-v'** option in the docker run command.
 
 ```bash
 mkdir /opt/openfire
 docker run --name=openfire -d \
-  -v /opt/openfire:/app/data \
+  -v /opt/openfire:/data \
   sameersbn/openfire:3.9.3
 ```
 
