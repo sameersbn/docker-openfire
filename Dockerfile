@@ -9,9 +9,7 @@ RUN apt-get update && \
 		rm -rf openfire_${OPENFIRE_VERSION}_all.deb && \
 		apt-get clean # 20140519
 
-ADD assets/ /app/
-RUN chmod 755 /app/setup/install
-RUN /app/setup/install
+ADD assets/init /app/init
 
 EXPOSE 3478
 EXPOSE 3479
