@@ -20,7 +20,7 @@ rm -rf /var/lib/openfire
 ln -sf /data/openfire/lib /var/lib/openfire
 
 echo "Starting openfire..."
-sudo -u openfire -H /usr/bin/java \
+exec sudo -u openfire -H /usr/bin/java \
 	-server \
 	-DopenfireHome=/usr/share/openfire \
 	-Dopenfire.lib.dir=/usr/share/openfire/lib \
