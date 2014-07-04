@@ -9,8 +9,8 @@ RUN apt-get update && \
 		rm -rf openfire_${OPENFIRE_VERSION}_all.deb && \
 		apt-get clean # 20140519
 
-ADD init /init
-RUN chmod 755 /init
+ADD start /start
+RUN chmod 755 /start
 
 EXPOSE 3478
 EXPOSE 3479
@@ -23,4 +23,4 @@ EXPOSE 7777
 EXPOSE 9090
 EXPOSE 9091
 VOLUME ["/data"]
-CMD ["/init"]
+CMD ["/start"]
