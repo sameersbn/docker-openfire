@@ -4,10 +4,8 @@
     - [Changelog](Changelog.md)
 - [Installation](#installation)
 - [Quick Start](#quick-start)
-- [Configuration](#configuration)
-  - [Data Store](#data-store)
-- [Maintenance](#maintenance)
-  - [SSH Login](#ssh-login)
+- [Data Store](#data-store)
+- [Upgrading](#upgrading)
 - Links
   - [Announcements](https://github.com/sameersbn/docker-openfire/issues/1)
   - [Issues](https://github.com/sameersbn/docker-openfire/issues)
@@ -52,10 +50,12 @@ sameersbn/openfire:3.9.3
 
 Point your browser to `http://localhost:9090` and follow the setup procedure to complete the installation.
 
-# Configuration
+The following video by HAKK5 will help you with the configuration and give you an introduction to openfire and some of its features.
 
-## Data Store
-The openfire image is configured to save all configurations and installed plugins at /app/data. As such we should mount a volume at `/app/data`
+[![Build A Free Jabber Server In 10 Minutes](http://img.youtube.com/vi/ytUB5qJm5HE/0.jpg)](https://www.youtube.com/v/ytUB5qJm5HE?start=246)
+
+# Data Store
+The openfire image is configured to save all configurations and installed plugins at /data. As such we should mount a volume at `/data`
 
 Volumes can be mounted in docker by specifying the **'-v'** option in the docker run command.
 
@@ -64,20 +64,29 @@ mkdir /opt/openfire
 docker run --name=openfire -d \
 -p 9090:9090 -p 5222:5222 -p 5223:5223  -p 7777:7777  -p 7070:7070 -p 7443:7443 -p 5229:5229 \
  -v /opt/openfire:/app/data \
-  sameersbn/openfire:3.9.3
 ```
 
-# Maintenance
+# Upgrading
 
-## SSH Login
-There are two methods to gain root login to the container, the first method is to add your public rsa key to the authorized_keys file and build the image.
+To upgrade to newer releases, simply follow this 3 step upgrade procedure.
 
-The second method is use the dynamically generated password. Every time the container is started a random password is generated using the pwgen tool and assigned to the root user. This password can be fetched from the docker logs.
+- **Step 1**: Stop the currently running image
 
-```bash
-docker logs openfire 2>&1 | grep '^User: ' | tail -n1
 ```
-The password is not persistent and changes every time the container is started.
+docker stop openfire
+```
+
+- **Step 2**: Update the docker image.
+
+```
+docker pull sameersbn/openfire:latest
+```
+
+- **Step 3**: Start the image
+
+```
+docker run -name openfire -d [OPTIONS] sameersbn/openfire:latest
+```
 
 # References
   * http://www.igniterealtime.org/projects/openfire/
