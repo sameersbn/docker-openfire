@@ -12,7 +12,7 @@
 - [References](#references)
 
 # Introduction
-Dockerfile to build a [Openfire](www.igniterealtime.org/projects/openfire) XMPP server.
+Dockerfile to build a [Openfire](http://www.igniterealtime.org/projects/openfire) XMPP server.
 
 ## Version
 Current Version: 3.9.3
