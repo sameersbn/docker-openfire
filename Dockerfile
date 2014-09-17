@@ -1,4 +1,4 @@
-FROM sameersbn/ubuntu:14.04.20140818
+FROM sameersbn/debian:jessie.20140918
 MAINTAINER sameer@damagehead.com
 
 ENV OPENFIRE_VERSION 3.9.3
@@ -7,7 +7,7 @@ RUN apt-get update && \
     wget "http://www.igniterealtime.org/downloadServlet?filename=openfire/openfire_${OPENFIRE_VERSION}_all.deb" -O /tmp/openfire_${OPENFIRE_VERSION}_all.deb && \
     dpkg -i /tmp/openfire_${OPENFIRE_VERSION}_all.deb && \
     rm -rf openfire_${OPENFIRE_VERSION}_all.deb && \
-    rm -rf /var/lib/apt/lists/* # 20140818
+    rm -rf /var/lib/apt/lists/* # 20140918
 
 ADD start /start
 RUN chmod 755 /start
