@@ -2,6 +2,7 @@
 - [Introduction](#introduction)
     - [Version](#version)
     - [Changelog](Changelog.md)
+- [Contributing](#contributing)
 - [Installation](#installation)
 - [Quick Start](#quick-start)
 - [Data Store](#data-store)
@@ -18,6 +19,14 @@ Dockerfile to build a [Openfire](http://www.igniterealtime.org/projects/openfire
 ## Version
 
 Current Version: **3.9.3-2**
+
+# Contributing
+
+If you find this image useful here's how you can help:
+
+- Send a Pull Request with your awesome new features and bug fixes
+- Help new users with [Issues](https://github.com/sameersbn/docker-openfire/issues) they may encounter
+- Send me a tip on [Gittip](https://gittip.com/sameersbn/) or using Bitcoin at **16rDxVqJPyYAFYPLduTaSiwe7ZiY1hHqKM**
 
 # Installation
 
