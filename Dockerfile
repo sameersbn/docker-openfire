@@ -1,4 +1,4 @@
-FROM sameersbn/ubuntu:14.04.20150504
+FROM sameersbn/ubuntu:14.04.20150603
 MAINTAINER sameer@damagehead.com
 
 ENV OPENFIRE_VERSION 3.9.3
@@ -8,7 +8,7 @@ RUN apt-get update \
       -O /tmp/openfire_${OPENFIRE_VERSION}_all.deb \
  && dpkg -i /tmp/openfire_${OPENFIRE_VERSION}_all.deb \
  && rm -rf openfire_${OPENFIRE_VERSION}_all.deb \
- && rm -rf /var/lib/apt/lists/* # 20150504
+ && rm -rf /var/lib/apt/lists/* # 20150603
 
 ADD start /start
 RUN chmod 755 /start
