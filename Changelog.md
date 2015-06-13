@@ -1,5 +1,8 @@
 # Changelog
 
+**latest**
+openfire: upgrade to v.3.10.0
+
 **3.9.3-2**
 - upgrade to sameersbn/debian:jessie.20141001, plugs shellshock
 
