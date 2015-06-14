@@ -20,7 +20,7 @@ Dockerfile to build a [Openfire](http://www.igniterealtime.org/projects/openfire
 
 ## Version
 
-Current Version: **3.9.3-2**
+Current Version: **3.9.3-3**
 
 # Contributing
 
@@ -69,7 +69,7 @@ docker pull sameersbn/openfire:latest
 You can also pull a particular version of openfire by specifying the version. For example,
 
 ```bash
-docker pull sameersbn/openfire:3.9.3-2
+docker pull sameersbn/openfire:3.9.3-3
 ```
 
 Alternately you can build the image yourself.
@@ -87,7 +87,7 @@ Run the openfire image
 ```bash
 docker run --name='openfire' -i -t --rm \
   -p 9090:9090 -p 5222:5222 -p 7777:7777 \
-  sameersbn/openfire:3.9.3-2
+  sameersbn/openfire:3.9.3-3
 ```
 
 Point your browser to `http://localhost:9090` and follow the setup procedure to complete the installation.
