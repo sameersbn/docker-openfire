@@ -8,7 +8,7 @@ RUN apt-get update \
       -O /tmp/openfire_${OPENFIRE_VERSION}_all.deb \
  && dpkg -i /tmp/openfire_${OPENFIRE_VERSION}_all.deb \
  && rm -rf openfire_${OPENFIRE_VERSION}_all.deb \
- && rm -rf /var/lib/apt/lists/* # 20150712
+ && rm -rf /var/lib/apt/lists/*
 
 ADD start /start
 RUN chmod 755 /start
