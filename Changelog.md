@@ -2,6 +2,7 @@
 
 **latest**
 - More directory structure reorganization
+- openfire: upgrade to 3.10.0
 
 **3.9.3-4**
 - Redefined directory structure in data volume
