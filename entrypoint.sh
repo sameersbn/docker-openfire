@@ -4,7 +4,7 @@ set -e
 chmod 775 /data
 
 mkdir -p /data/openfire
-chown -R openfire:openfire /data/openfire
+chown -R ${OPENFIRE_USER}:${OPENFIRE_USER} /data/openfire
 
 # populate default openfire configuration if it does not exist
 if [ ! -d /data/openfire/etc ]; then
@@ -28,7 +28,7 @@ fi
 # default behaviour is to launch openfire
 if [[ -z ${1} ]]; then
   echo "Starting openfire..."
-  exec start-stop-daemon --start --chuid openfire:openfire --exec /usr/bin/java -- \
+  exec start-stop-daemon --start --chuid ${OPENFIRE_USER}:${OPENFIRE_USER} --exec /usr/bin/java -- \
     -server \
     -DopenfireHome=/usr/share/openfire \
     -Dopenfire.lib.dir=/usr/share/openfire/lib \
