@@ -19,6 +19,12 @@ fi
 rm -rf /var/lib/openfire
 ln -sf /data/openfire/lib /var/lib/openfire
 
+# allow arguments to be passed to openfire launch
+if [[ ${1:0:1} = '-' ]]; then
+  EXTRA_ARGS="$@"
+  set --
+fi
+
 # default behaviour is to launch openfire
 if [[ -z ${1} ]]; then
   echo "Starting openfire..."
@@ -27,7 +33,7 @@ if [[ -z ${1} ]]; then
     -DopenfireHome=/usr/share/openfire \
     -Dopenfire.lib.dir=/usr/share/openfire/lib \
     -classpath /usr/share/openfire/lib/startup.jar \
-    -jar /usr/share/openfire/lib/startup.jar
+    -jar /usr/share/openfire/lib/startup.jar ${EXTRA_ARGS}
 else
   exec "$@"
 fi
