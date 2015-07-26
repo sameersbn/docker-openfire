@@ -1,161 +1,136 @@
-# Table of Contents
+# sameersbn/openfire:3.9.3-3
+
 - [Introduction](#introduction)
-    - [Version](#version)
-    - [Changelog](Changelog.md)
-- [Contributing](#contributing)
-- [Reporting Issues](#reporting-issues)
-- [Installation](#installation)
-- [Quick Start](#quick-start)
-- [Data Store](#data-store)
-- [Shell Access](#shell-access)
-- [Upgrading](#upgrading)
-- Links
-  - [Announcements](https://github.com/sameersbn/docker-openfire/issues/1)
-  - [Issues](https://github.com/sameersbn/docker-openfire/issues)
+  - [Contributing](#contributing)
+  - [Issues](#issues)
+  - [Announcements](../../issues/1)
+- [Getting started](#getting-started)
+  - [Installation](#installation)
+  - [Quickstart](#quickstart)
+  - [Persistence](#persistence)
+  - [Logs](#logs)
 - [References](#references)
 
 # Introduction
 
-Dockerfile to build a [Openfire](http://www.igniterealtime.org/projects/openfire) XMPP server.
+`Dockerfile` to create a [Docker](https://www.docker.com/) container image for [Openfire](https://www.unix-ag.uni-kl.de/~bloch/acng/).
 
-## Version
+Openfire is a real time collaboration (RTC) server licensed under the Open Source Apache License. It uses the only widely adopted open protocol for instant messaging, XMPP (also called Jabber). Openfire is incredibly easy to setup and administer, but offers rock-solid security and performance.
 
-Current Version: **3.9.3-3**
-
-# Contributing
+## Contributing
 
 If you find this image useful here's how you can help:
 
-- Send a Pull Request with your awesome new features and bug fixes
-- Help new users with [Issues](https://github.com/sameersbn/docker-openfire/issues) they may encounter
+- Send a pull request with your awesome features and bug fixes
+- Help users resolve their [issues](../../issues?q=is%3Aopen+is%3Aissue).
 - Support the development of this image with a [donation](http://www.damagehead.com/donate/)
 
-# Reporting Issues
+## Issues
 
-Docker is a relatively new project and is active being developed and tested by a thriving community of developers and testers and every release of docker features many enhancements and bugfixes.
+Before reporting your issue please try updating Docker to the latest version and check if it resolves the issue. Refer to the Docker [installation guide](https://docs.docker.com/installation) for instructions.
 
-Given the nature of the development and release cycle it is very important that you have the latest version of docker installed because any issue that you encounter might have already been fixed with a newer docker release.
+SELinux users should try disabling SELinux using the command `setenforce 0` to see if it resolves the issue.
 
-For ubuntu users I suggest [installing docker](https://docs.docker.com/installation/ubuntulinux/) using docker's own package repository since the version of docker packaged in the ubuntu repositories are a little dated.
+If the above recommendations do not help then [report your issue](../../issues/new) along with the following information:
 
-Here is the shortform of the installation of an updated version of docker on ubuntu.
+- Output of the `docker version` and `docker info` commands
+- The `docker run` command or `docker-compose.yml` used to start the image. Mask out the sensitive bits.
+- Please state if you are using [Boot2Docker](http://www.boot2docker.io), [VirtualBox](https://www.virtualbox.org), etc.
 
-```bash
-sudo apt-get purge docker.io
-curl -s https://get.docker.io/ubuntu/ | sudo sh
-sudo apt-get update
-sudo apt-get install lxc-docker
-```
+# Getting started
 
-Fedora and RHEL/CentOS users should try disabling selinux with `setenforce 0` and check if resolves the issue. If it does than there is not much that I can help you with. You can either stick with selinux disabled (not recommended by redhat) or switch to using ubuntu.
+## Installation
 
-If using the latest docker version and/or disabling selinux does not fix the issue then please file a issue request on the [issues](https://github.com/sameersbn/docker-openfire/issues) page.
-
-In your issue report please make sure you provide the following information:
-
-- The host ditribution and release version.
-- Output of the `docker version` command
-- Output of the `docker info` command
-- The `docker run` command you used to run the image (mask out the sensitive bits).
-
-# Installation
-
-Pull the `latest` version of the image from the docker index. This is the recommended method of installation as it is easier to update image in the future. These builds are performed by the **Docker Trusted Build** service.
-
-```bash
-docker pull sameersbn/openfire:latest
-```
-
-You can also pull a particular version of openfire by specifying the version. For example,
+This image is available as a [trusted build](//hub.docker.com/u/sameersbn/openfire) on the [Docker hub](//hub.docker.com) and is the recommended method of installation.
 
 ```bash
 docker pull sameersbn/openfire:3.9.3-3
 ```
 
-Alternately you can build the image yourself.
+Alternatively you can build the image yourself.
 
 ```bash
 git clone https://github.com/sameersbn/docker-openfire.git
 cd docker-openfire
-docker build --tag="$USER/openfire" .
+docker build --tag $USER/openfire .
 ```
 
-# Quick Start
+## Quickstart
 
-Run the openfire image
+Start Openfire using:
 
 ```bash
-docker run --name='openfire' -i -t --rm \
-  -p 9090:9090 -p 5222:5222 -p 7777:7777 \
+docker run --name openfire -d --restart=always \
+  --publish 9090:9090 --publish 5222:5222 --publish 7777:7777 \
+  --volume /srv/docker/openfire:/data \
   sameersbn/openfire:3.9.3-3
 ```
 
+*Alternatively, you can use the sample [docker-compose.yml](docker-compose.yml) file to start the container using [Docker Compose](https://docs.docker.com/compose/)*
+
 Point your browser to `http://localhost:9090` and follow the setup procedure to complete the installation.
 
-The following video by HAKK5 will help you with the configuration and give you an introduction to openfire and some of its features.
+The [![Build A Free Jabber Server In 10 Minutes](http://img.youtube.com/vi/ytUB5qJm5HE/0.jpg)](https://www.youtube.com/v/ytUB5qJm5HE?start=246) video by HAKK5 should help you with the configuration and also introduce you to some of its features.
 
-[![Build A Free Jabber Server In 10 Minutes](http://img.youtube.com/vi/ytUB5qJm5HE/0.jpg)](https://www.youtube.com/v/ytUB5qJm5HE?start=246)
+## Persistence
 
-# Data Store
+For the cache to preserve its state across container shutdown and startup you should mount a volume at `/data`.
 
-The openfire image is configured to save all configurations and installed plugins at `/data`. As such we should mount a volume at `/data`
+> *The [Quickstart](#quickstart) command already mounts a volume for persistence.*
 
-Volumes can be mounted in docker by specifying the **'-v'** option in the docker run command.
+SELinux users should update the security context of the host mountpoint so that it plays nicely with Docker:
 
 ```bash
-mkdir /opt/openfire
-docker run --name=openfire -d \
-  -p 9090:9090 -p 5222:5222 -p 5223:5223 -p 7777:7777 \
-  -p 7070:7070 -p 7443:7443 -p 5229:5229 -p 5269:5269 \
-  -v /opt/openfire:/data \
+mkdir -p /srv/docker/openfire
+chcon -Rt svirt_sandbox_file_t /srv/docker/openfire
 ```
+
+## Logs
+
+To access the Openfire logs, located at `/var/log/openfire`, you can use `docker exec`. For example, if you want to tail the logs:
+
+```bash
+docker exec -it openfire tail -f /var/log/openfire/info.log
+```
+
+# Maintenance
+
+## Upgrading
+
+To upgrade to newer releases:
+
+  1. Download the updated Docker image:
+
+  ```bash
+  docker pull sameersbn/openfire:3.9.3-3
+  ```
+
+  2. Stop the currently running image:
+
+  ```bash
+  docker stop openfire
+  ```
+
+  3. Remove the stopped container
+
+  ```bash
+  docker rm -v openfire
+  ```
+
+  4. Start the updated image
+
+  ```bash
+  docker run -name openfire -d \
+    [OPTIONS] \
+    sameersbn/openfire:3.9.3-3
+  ```
 
 ## Shell Access
 
-For debugging and maintenance purposes you may want access the containers shell. If you are using docker version `1.3.0` or higher you can access a running containers shell using `docker exec` command.
+For debugging and maintenance purposes you may want access the containers shell. If you are using Docker version `1.3.0` or higher you can access a running containers shell by starting `bash` using `docker exec`:
 
 ```bash
 docker exec -it openfire bash
-```
-
-If you are using an older version of docker, you can use the [nsenter](http://man7.org/linux/man-pages/man1/nsenter.1.html) linux tool (part of the util-linux package) to access the container shell.
-
-Some linux distros (e.g. ubuntu) use older versions of the util-linux which do not include the `nsenter` tool. To get around this @jpetazzo has created a nice docker image that allows you to install the `nsenter` utility and a helper script named `docker-enter` on these distros.
-
-To install `nsenter` execute the following command on your host,
-
-```bash
-docker run --rm -v /usr/local/bin:/target jpetazzo/nsenter
-```
-
-Now you can access the container shell using the command
-
-```bash
-sudo docker-enter openfire
-```
-
-For more information refer https://github.com/jpetazzo/nsenter
-
-# Upgrading
-
-To upgrade to newer releases, simply follow this 3 step upgrade procedure.
-
-- **Step 1**: Stop the currently running image
-
-```bash
-docker stop openfire
-```
-
-- **Step 2**: Update the docker image.
-
-```bash
-docker pull sameersbn/openfire:latest
-```
-
-- **Step 3**: Start the image
-
-```bash
-docker run -name openfire -d [OPTIONS] sameersbn/openfire:latest
 ```
 
 # References
