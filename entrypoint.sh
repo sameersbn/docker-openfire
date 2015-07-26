@@ -1,9 +1,8 @@
 #!/bin/bash
 set -e
 
-chmod 775 ${OPENFIRE_DATA_DIR}
-
 mkdir -p ${OPENFIRE_DATA_DIR}/openfire
+chmod -R 0755 ${OPENFIRE_DATA_DIR}/openfire
 chown -R ${OPENFIRE_USER}:${OPENFIRE_USER} ${OPENFIRE_DATA_DIR}/openfire
 
 # populate default openfire configuration if it does not exist
