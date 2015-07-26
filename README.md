@@ -72,7 +72,7 @@ Point your browser to http://localhost:9090 and follow the setup procedure to co
 
 ## Persistence
 
-For the cache to preserve its state across container shutdown and startup you should mount a volume at `/data`.
+For the Openfire to preserve its state across container shutdown and startup you should mount a volume at `/data`.
 
 > *The [Quickstart](#quickstart) command already mounts a volume for persistence.*
 
