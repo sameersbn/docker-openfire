@@ -23,10 +23,12 @@ fi
 ## done!
 
 # re-wire openfile symbolic links
-rm -rf /usr/share/openfire/{conf,plugins,embedded-db}
+rm -rf /usr/share/openfire/{conf,resources/security,lib/log4j.xml,plugins,embedded-db}
 ln -sf ${OPENFIRE_DATA_DIR}/conf /usr/share/openfire/
-ln -sf ${OPENFIRE_DATA_DIR}/embedded-db /usr/share/openfire/
+ln -sf ${OPENFIRE_DATA_DIR}/conf/security /usr/share/openfire/resources/
+ln -sf ${OPENFIRE_DATA_DIR}/conf/log4j.xml /usr/share/openfire/lib/
 ln -sf ${OPENFIRE_DATA_DIR}/plugins /usr/share/openfire/
+ln -sf ${OPENFIRE_DATA_DIR}/embedded-db /usr/share/openfire/
 
 # create openfire data dir
 mkdir -p ${OPENFIRE_DATA_DIR}
