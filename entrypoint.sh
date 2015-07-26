@@ -1,23 +1,23 @@
 #!/bin/bash
 set -e
 
-chmod 775 /data
+chmod 775 ${OPENFIRE_DATA_DIR}
 
-mkdir -p /data/openfire
-chown -R ${OPENFIRE_USER}:${OPENFIRE_USER} /data/openfire
+mkdir -p ${OPENFIRE_DATA_DIR}/openfire
+chown -R ${OPENFIRE_USER}:${OPENFIRE_USER} ${OPENFIRE_DATA_DIR}/openfire
 
 # populate default openfire configuration if it does not exist
-if [ ! -d /data/openfire/etc ]; then
-  mv /etc/openfire /data/openfire/etc
+if [ ! -d ${OPENFIRE_DATA_DIR}/openfire/etc ]; then
+  mv /etc/openfire ${OPENFIRE_DATA_DIR}/openfire/etc
 fi
 rm -rf /etc/openfire
-ln -sf /data/openfire/etc /etc/openfire
+ln -sf ${OPENFIRE_DATA_DIR}/openfire/etc /etc/openfire
 
-if [ ! -d /data/openfire/lib ]; then
-  mv /var/lib/openfire /data/openfire/lib
+if [ ! -d ${OPENFIRE_DATA_DIR}/openfire/lib ]; then
+  mv /var/lib/openfire ${OPENFIRE_DATA_DIR}/openfire/lib
 fi
 rm -rf /var/lib/openfire
-ln -sf /data/openfire/lib /var/lib/openfire
+ln -sf ${OPENFIRE_DATA_DIR}/openfire/lib /var/lib/openfire
 
 # allow arguments to be passed to openfire launch
 if [[ ${1:0:1} = '-' ]]; then

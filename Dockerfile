@@ -2,7 +2,8 @@ FROM sameersbn/ubuntu:14.04.20150712
 MAINTAINER sameer@damagehead.com
 
 ENV OPENFIRE_VERSION=3.9.3 \
-    OPENFIRE_USER=openfire
+    OPENFIRE_USER=openfire \
+    OPENFIRE_DATA_DIR=/data
 
 RUN apt-get update \
  && apt-get install -y openjdk-7-jre \
@@ -16,5 +17,5 @@ COPY entrypoint.sh /sbin/entrypoint.sh
 RUN chmod 755 /sbin/entrypoint.sh
 
 EXPOSE 3478/tcp 3479/tcp 5222/tcp 5223/tcp 5229/tcp 7070/tcp 7443/tcp 7777/tcp 9090/tcp 9091/tcp
-VOLUME ["/data"]
+VOLUME ["${OPENFIRE_DATA_DIR}"]
 ENTRYPOINT ["/sbin/entrypoint.sh"]
