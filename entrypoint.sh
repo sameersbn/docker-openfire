@@ -31,6 +31,13 @@ fi
 rm -rf /var/lib/openfire
 ln -sf ${OPENFIRE_DATA_DIR}/lib /var/lib/openfire
 
+# create version file
+CURRENT_VERSION=
+[[ -f ${OPENFIRE_DATA_DIR}/VERSION ]] && CURRENT_VERSION=$(cat ${OPENFIRE_DATA_DIR}/VERSION)
+if [[ ${OPENFIRE_VERSION} != ${CURRENT_VERSION} ]]; then
+  echo -n "${OPENFIRE_VERSION}" | sudo -HEu ${OPENFIRE_USER} tee ${OPENFIRE_DATA_DIR}/VERSION >/dev/null
+fi
+
 # allow arguments to be passed to openfire launch
 if [[ ${1:0:1} = '-' ]]; then
   EXTRA_ARGS="$@"
