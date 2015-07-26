@@ -1,6 +1,17 @@
 #!/bin/bash
 set -e
 
+##
+# directory structure migration
+##
+if [ -d ${OPENFIRE_DATA_DIR}/openfire ]; then
+  mv ${OPENFIRE_DATA_DIR}/openfire/etc ${OPENFIRE_DATA_DIR}/etc
+  mv ${OPENFIRE_DATA_DIR}/openfire/lib ${OPENFIRE_DATA_DIR}/lib
+  rm -rf ${OPENFIRE_DATA_DIR}/openfire
+fi
+
+## done!
+
 # create openfire data dir
 mkdir -p ${OPENFIRE_DATA_DIR}
 chmod -R 0755 ${OPENFIRE_DATA_DIR}
@@ -10,13 +21,6 @@ chown -R ${OPENFIRE_USER}:${OPENFIRE_USER} ${OPENFIRE_DATA_DIR}
 mkdir -p ${OPENFIRE_LOG_DIR}
 chmod -R 0755 ${OPENFIRE_LOG_DIR}
 chown -R ${OPENFIRE_USER}:${OPENFIRE_USER} ${OPENFIRE_LOG_DIR}
-
-# migrate old directory structure
-if [ -d ${OPENFIRE_DATA_DIR}/openfire ]; then
-  mv ${OPENFIRE_DATA_DIR}/openfire/etc ${OPENFIRE_DATA_DIR}/etc
-  mv ${OPENFIRE_DATA_DIR}/openfire/lib ${OPENFIRE_DATA_DIR}/lib
-  rm -rf ${OPENFIRE_DATA_DIR}/openfire
-fi
 
 # populate default openfire configuration if it does not exist
 if [ ! -d ${OPENFIRE_DATA_DIR}/etc ]; then
