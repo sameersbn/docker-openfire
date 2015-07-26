@@ -26,7 +26,6 @@ fi
 
 # default behaviour is to launch openfire
 if [[ -z ${1} ]]; then
-  echo "Starting openfire..."
   exec start-stop-daemon --start --chuid ${OPENFIRE_USER}:${OPENFIRE_USER} --exec /usr/bin/java -- \
     -server \
     -DopenfireHome=/usr/share/openfire \
