@@ -1,9 +1,15 @@
 #!/bin/bash
 set -e
 
+# create openfire data dir
 mkdir -p ${OPENFIRE_DATA_DIR}/openfire
 chmod -R 0755 ${OPENFIRE_DATA_DIR}/openfire
 chown -R ${OPENFIRE_USER}:${OPENFIRE_USER} ${OPENFIRE_DATA_DIR}/openfire
+
+# create openfire log dir
+mkdir -p ${OPENFIRE_LOG_DIR}
+chmod -R 0755 ${OPENFIRE_LOG_DIR}
+chown -R ${OPENFIRE_USER}:${OPENFIRE_USER} ${OPENFIRE_LOG_DIR}
 
 # populate default openfire configuration if it does not exist
 if [ ! -d ${OPENFIRE_DATA_DIR}/openfire/etc ]; then

@@ -3,7 +3,8 @@ MAINTAINER sameer@damagehead.com
 
 ENV OPENFIRE_VERSION=3.9.3 \
     OPENFIRE_USER=openfire \
-    OPENFIRE_DATA_DIR=/data
+    OPENFIRE_DATA_DIR=/data \
+    OPENFIRE_LOG_DIR=/var/log/openfire
 
 RUN apt-get update \
  && apt-get install -y openjdk-7-jre \
