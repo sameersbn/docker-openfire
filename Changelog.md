@@ -1,5 +1,8 @@
 # Changelog
 
+**latest**
+- More directory structure reorganization
+
 **3.9.3-4**
 - Redefined directory structure in data volume
 - Create `VERSION` file in data volume
