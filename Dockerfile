@@ -10,9 +10,9 @@ RUN apt-get update \
  && rm -rf openfire_${OPENFIRE_VERSION}_all.deb \
  && rm -rf /var/lib/apt/lists/*
 
-COPY start /start
-RUN chmod 755 /start
+COPY entrypoint.sh /sbin/entrypoint.sh
+RUN chmod 755 /sbin/entrypoint.sh
 
 EXPOSE 3478/tcp 3479/tcp 5222/tcp 5223/tcp 5229/tcp 7070/tcp 7443/tcp 7777/tcp 9090/tcp 9091/tcp
 VOLUME ["/data"]
-ENTRYPOINT ["/start"]
+ENTRYPOINT ["/sbin/entrypoint.sh"]
