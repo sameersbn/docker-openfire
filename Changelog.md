@@ -1,5 +1,9 @@
 # Changelog
 
+**3.9.3-4**
+- Redefined directory structure in data volume
+- Create `VERSION` file in data volume
+
 **3.9.3-3**
 - base image update to fix SSL vulnerability
 
