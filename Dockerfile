@@ -10,7 +10,7 @@ RUN apt-get update \
  && rm -rf openfire_${OPENFIRE_VERSION}_all.deb \
  && rm -rf /var/lib/apt/lists/*
 
-ADD start /start
+COPY start /start
 RUN chmod 755 /start
 
 EXPOSE 3478
