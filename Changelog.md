@@ -1,5 +1,8 @@
 # Changelog
 
+**latest**
+- openfire: upgrade to 3.10.2
+
 **3.10.0**
 - More directory structure reorganization
 - openfire: upgrade to 3.10.0
