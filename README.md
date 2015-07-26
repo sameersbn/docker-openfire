@@ -70,7 +70,7 @@ docker run --name openfire -d --restart=always \
 
 Point your browser to http://localhost:9090 and follow the setup procedure to complete the installation.
 
-The [![Build A Free Jabber Server In 10 Minutes](http://img.youtube.com/vi/ytUB5qJm5HE/0.jpg)](https://www.youtube.com/v/ytUB5qJm5HE?start=246) video by HAKK5 should help you with the configuration and also introduce you to some of its features.
+The [Build A Free Jabber Server In 10 Minutes](https://www.youtube.com/v/ytUB5qJm5HE?start=246) video by HAKK5 should help you with the configuration and also introduce you to some of its features.
 
 ## Persistence
 
