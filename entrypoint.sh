@@ -14,7 +14,7 @@ initialize_data_dir() {
   echo "Initializing ${OPENFIRE_DATA_DIR}..."
 
   mkdir -p ${OPENFIRE_DATA_DIR}
-  chmod -R 0755 ${OPENFIRE_DATA_DIR}
+  chmod -R 0750 ${OPENFIRE_DATA_DIR}
   chown -R ${OPENFIRE_USER}:${OPENFIRE_USER} ${OPENFIRE_DATA_DIR}
 
   # migrates data volume directory structure
