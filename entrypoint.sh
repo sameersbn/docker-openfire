@@ -18,25 +18,25 @@ initialize_data_dir() {
   chown -R ${OPENFIRE_USER}:${OPENFIRE_USER} ${OPENFIRE_DATA_DIR}
 
   # migrates data volume directory structure
-  if [ -d ${OPENFIRE_DATA_DIR}/openfire ]; then
+  if [[ -d ${OPENFIRE_DATA_DIR}/openfire ]]; then
     echo "Migrating existing data..."
     mv ${OPENFIRE_DATA_DIR}/openfire/etc ${OPENFIRE_DATA_DIR}/conf
     mv ${OPENFIRE_DATA_DIR}/openfire/lib/plugins ${OPENFIRE_DATA_DIR}/plugins
     mv ${OPENFIRE_DATA_DIR}/openfire/lib/embedded-db ${OPENFIRE_DATA_DIR}/embedded-db
     rm -rf ${OPENFIRE_DATA_DIR}/openfire
   fi
-  [ -d ${OPENFIRE_DATA_DIR}/etc ] && mv ${OPENFIRE_DATA_DIR}/etc ${OPENFIRE_DATA_DIR}/conf
-  [ -d ${OPENFIRE_DATA_DIR}/lib/plugins ] && mv ${OPENFIRE_DATA_DIR}/lib/plugins ${OPENFIRE_DATA_DIR}/plugins
-  [ -d ${OPENFIRE_DATA_DIR}/lib/embedded-db ] && mv ${OPENFIRE_DATA_DIR}/lib/embedded-db ${OPENFIRE_DATA_DIR}/embedded-db
+  [[ -d ${OPENFIRE_DATA_DIR}/etc ]] && mv ${OPENFIRE_DATA_DIR}/etc ${OPENFIRE_DATA_DIR}/conf
+  [[ -d ${OPENFIRE_DATA_DIR}/lib/plugins ]] && mv ${OPENFIRE_DATA_DIR}/lib/plugins ${OPENFIRE_DATA_DIR}/plugins
+  [[ -d ${OPENFIRE_DATA_DIR}/lib/embedded-db ]] && mv ${OPENFIRE_DATA_DIR}/lib/embedded-db ${OPENFIRE_DATA_DIR}/embedded-db
   rm -rf ${OPENFIRE_DATA_DIR}/lib
 
   # remove admin plugin from plugins directory
-  if [ -d ${OPENFIRE_DATA_DIR}/plugins/admin ]; then
+  if [[ -d ${OPENFIRE_DATA_DIR}/plugins/admin ]]; then
     rm -rf ${OPENFIRE_DATA_DIR}/plugins/admin
   fi
 
   # initialize the data volume
-  if [ ! -d ${OPENFIRE_DATA_DIR}/conf ]; then
+  if [[ ! -d ${OPENFIRE_DATA_DIR}/conf ]]; then
     sudo -HEu ${OPENFIRE_USER} cp -a /etc/openfire ${OPENFIRE_DATA_DIR}/conf
   fi
   sudo -HEu ${OPENFIRE_USER} mkdir -p ${OPENFIRE_DATA_DIR}/{plugins,embedded-db}
