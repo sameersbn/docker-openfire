@@ -3,7 +3,7 @@ MAINTAINER sameer@damagehead.com
 
 ENV OPENFIRE_VERSION=3.10.2 \
     OPENFIRE_USER=openfire \
-    OPENFIRE_DATA_DIR=/data \
+    OPENFIRE_DATA_DIR=/var/lib/openfire \
     OPENFIRE_LOG_DIR=/var/log/openfire
 
 RUN apt-get update \
@@ -11,6 +11,7 @@ RUN apt-get update \
  && wget "http://www.igniterealtime.org/downloadServlet?filename=openfire/openfire_${OPENFIRE_VERSION}_all.deb" \
       -O /tmp/openfire_${OPENFIRE_VERSION}_all.deb \
  && dpkg -i /tmp/openfire_${OPENFIRE_VERSION}_all.deb \
+ && mv /var/lib/openfire/plugins/admin /usr/share/openfire/plugin-admin \
  && rm -rf openfire_${OPENFIRE_VERSION}_all.deb \
  && rm -rf /var/lib/apt/lists/*
 

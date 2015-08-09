@@ -2,12 +2,10 @@
 set -e
 
 rewire_openfire() {
-  rm -rf /usr/share/openfire/{conf,resources/security,lib/log4j.xml,plugins,embedded-db}
+  rm -rf /usr/share/openfire/{conf,resources/security,lib/log4j.xml}
   ln -sf ${OPENFIRE_DATA_DIR}/conf /usr/share/openfire/
   ln -sf ${OPENFIRE_DATA_DIR}/conf/security /usr/share/openfire/resources/
   ln -sf ${OPENFIRE_DATA_DIR}/conf/log4j.xml /usr/share/openfire/lib/
-  ln -sf ${OPENFIRE_DATA_DIR}/plugins /usr/share/openfire/
-  ln -sf ${OPENFIRE_DATA_DIR}/embedded-db /usr/share/openfire/
 }
 
 initialize_data_dir() {
@@ -30,18 +28,13 @@ initialize_data_dir() {
   [[ -d ${OPENFIRE_DATA_DIR}/lib/embedded-db ]] && mv ${OPENFIRE_DATA_DIR}/lib/embedded-db ${OPENFIRE_DATA_DIR}/embedded-db
   rm -rf ${OPENFIRE_DATA_DIR}/lib
 
-  # remove admin plugin from plugins directory
-  if [[ -d ${OPENFIRE_DATA_DIR}/plugins/admin ]]; then
-    rm -rf ${OPENFIRE_DATA_DIR}/plugins/admin
-  fi
-
   # initialize the data volume
   if [[ ! -d ${OPENFIRE_DATA_DIR}/conf ]]; then
     sudo -HEu ${OPENFIRE_USER} cp -a /etc/openfire ${OPENFIRE_DATA_DIR}/conf
   fi
   sudo -HEu ${OPENFIRE_USER} mkdir -p ${OPENFIRE_DATA_DIR}/{plugins,embedded-db}
   sudo -HEu ${OPENFIRE_USER} rm -rf ${OPENFIRE_DATA_DIR}/plugins/admin
-  sudo -HEu ${OPENFIRE_USER} ln -sf /var/lib/openfire/plugins/admin ${OPENFIRE_DATA_DIR}/plugins/admin
+  sudo -HEu ${OPENFIRE_USER} ln -sf /usr/share/openfire/plugin-admin /var/lib/openfire/plugins/admin
 
   # create version file
   CURRENT_VERSION=

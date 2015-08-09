@@ -62,7 +62,7 @@ Start Openfire using:
 ```bash
 docker run --name openfire -d --restart=always \
   --publish 9090:9090 --publish 5222:5222 --publish 7777:7777 \
-  --volume /srv/docker/openfire:/data \
+  --volume /srv/docker/openfire:/var/lib/openfire \
   sameersbn/openfire:3.10.2
 ```
 
@@ -72,7 +72,7 @@ Point your browser to http://localhost:9090 and follow the setup procedure to co
 
 ## Persistence
 
-For the Openfire to preserve its state across container shutdown and startup you should mount a volume at `/data`.
+For the Openfire to preserve its state across container shutdown and startup you should mount a volume at `/var/lib/openfire`.
 
 > *The [Quickstart](#quickstart) command already mounts a volume for persistence.*
 

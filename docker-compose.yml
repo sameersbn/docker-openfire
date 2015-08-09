@@ -5,4 +5,4 @@ Openfire:
     - "5222:5222"
     - "7777:7777"
   volumes:
-    - /srv/docker/openfire:/data
+    - /srv/docker/openfire/openfire:/var/lib/openfire
