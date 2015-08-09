@@ -1,5 +1,8 @@
 # Changelog
 
+**3.10.2-1**
+- persistent data volume moved to `/var/lib/openfire`
+
 **3.10.2**
 - openfire: upgrade to 3.10.2
 
