@@ -57,12 +57,12 @@ if [[ ${1:0:1} = '-' ]]; then
   set --
 fi
 
+rewire_openfire
+initialize_data_dir
+initialize_log_dir
+
 # default behaviour is to launch openfire
 if [[ -z ${1} ]]; then
-  rewire_openfire
-  initialize_data_dir
-  initialize_log_dir
-
   exec start-stop-daemon --start --chuid ${OPENFIRE_USER}:${OPENFIRE_USER} --exec /usr/bin/java -- \
     -server \
     -DopenfireHome=/usr/share/openfire \
