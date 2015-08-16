@@ -8,8 +8,7 @@ ENV OPENFIRE_VERSION=3.10.2 \
 
 RUN apt-get update \
  && apt-get install -y openjdk-7-jre \
- && wget "http://www.igniterealtime.org/downloadServlet?filename=openfire/openfire_${OPENFIRE_VERSION}_all.deb" \
-      -O /tmp/openfire_${OPENFIRE_VERSION}_all.deb \
+ && wget "http://download.igniterealtime.org/openfire/openfire_${OPENFIRE_VERSION}_all.deb" -O /tmp/openfire_${OPENFIRE_VERSION}_all.deb \
  && dpkg -i /tmp/openfire_${OPENFIRE_VERSION}_all.deb \
  && mv /var/lib/openfire/plugins/admin /usr/share/openfire/plugin-admin \
  && rm -rf openfire_${OPENFIRE_VERSION}_all.deb \
