@@ -7,7 +7,7 @@ ENV OPENFIRE_VERSION=3.10.2 \
     OPENFIRE_LOG_DIR=/var/log/openfire
 
 RUN apt-get update \
- && apt-get install -y openjdk-7-jre \
+ && DEBIAN_FRONTEND=noninteractive apt-get install -y openjdk-7-jre \
  && wget "http://download.igniterealtime.org/openfire/openfire_${OPENFIRE_VERSION}_all.deb" -O /tmp/openfire_${OPENFIRE_VERSION}_all.deb \
  && dpkg -i /tmp/openfire_${OPENFIRE_VERSION}_all.deb \
  && mv /var/lib/openfire/plugins/admin /usr/share/openfire/plugin-admin \
