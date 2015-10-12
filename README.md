@@ -1,3 +1,5 @@
+[![Docker Repository on Quay.io](https://quay.io/repository/sameersbn/openfire/status "Docker Repository on Quay.io")](https://quay.io/repository/sameersbn/openfire)
+
 # quay.io/sameersbn/openfire:3.10.2-3
 
 - [Introduction](#introduction)
