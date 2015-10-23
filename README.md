@@ -1,6 +1,6 @@
 [![Docker Repository on Quay.io](https://quay.io/repository/sameersbn/openfire/status "Docker Repository on Quay.io")](https://quay.io/repository/sameersbn/openfire)
 
-# quay.io/sameersbn/openfire:3.10.2-4
+# quay.io/sameersbn/openfire:3.10.2-5
 
 - [Introduction](#introduction)
   - [Contributing](#contributing)
@@ -46,7 +46,7 @@ If the above recommendations do not help then [report your issue](../../issues/n
 Automated builds of the image are available on [Quay.io](https://quay.io/repository/sameersbn/openfire) and is the recommended method of installation.
 
 ```bash
-docker pull quay.io/sameersbn/openfire:3.10.2-4
+docker pull quay.io/sameersbn/openfire:3.10.2-5
 ```
 
 Alternatively you can build the image yourself.
@@ -65,7 +65,7 @@ Start Openfire using:
 docker run --name openfire -d --restart=always \
   --publish 9090:9090 --publish 5222:5222 --publish 7777:7777 \
   --volume /srv/docker/openfire:/var/lib/openfire \
-  quay.io/sameersbn/openfire:3.10.2-4
+  quay.io/sameersbn/openfire:3.10.2-5
 ```
 
 *Alternatively, you can use the sample [docker-compose.yml](docker-compose.yml) file to start the container using [Docker Compose](https://docs.docker.com/compose/)*
@@ -102,7 +102,7 @@ To upgrade to newer releases:
   1. Download the updated Docker image:
 
   ```bash
-  docker pull quay.io/sameersbn/openfire:3.10.2-4
+  docker pull quay.io/sameersbn/openfire:3.10.2-5
   ```
 
   2. Stop the currently running image:
@@ -122,7 +122,7 @@ To upgrade to newer releases:
   ```bash
   docker run -name openfire -d \
     [OPTIONS] \
-    quay.io/sameersbn/openfire:3.10.2-4
+    quay.io/sameersbn/openfire:3.10.2-5
   ```
 
 ## Shell Access
