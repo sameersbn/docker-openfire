@@ -1,7 +1,7 @@
 all: build
 
 build:
-	@docker build --tag=quay.io/sameersbn/openfire .
+	@docker build --tag=sameersbn/openfire .
 
 release: build
-	@docker build --tag=quay.io/sameersbn/openfire:$(shell cat VERSION) .
+	@docker build --tag=sameersbn/openfire:$(shell cat VERSION) .
