@@ -54,9 +54,7 @@ docker pull sameersbn/openfire:3.10.2-6
 Alternatively you can build the image yourself.
 
 ```bash
-git clone https://github.com/sameersbn/docker-openfire.git
-cd docker-openfire
-docker build --tag $USER/openfire .
+docker build -t sameersbn/openfire github.com/sameersbn/docker-openfire
 ```
 
 ## Quickstart
