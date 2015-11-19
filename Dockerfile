@@ -1,7 +1,7 @@
 FROM sameersbn/ubuntu:14.04.20151117
 MAINTAINER sameer@damagehead.com
 
-ENV OPENFIRE_VERSION=3.10.2 \
+ENV OPENFIRE_VERSION=3.10.3 \
     OPENFIRE_USER=openfire \
     OPENFIRE_DATA_DIR=/var/lib/openfire \
     OPENFIRE_LOG_DIR=/var/log/openfire
