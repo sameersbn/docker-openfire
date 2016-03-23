@@ -1,6 +1,6 @@
 [![Docker Repository on Quay.io](https://quay.io/repository/sameersbn/openfire/status "Docker Repository on Quay.io")](https://quay.io/repository/sameersbn/openfire)
 
-# sameersbn/openfire:3.10.3-6
+# sameersbn/openfire:3.10.3-7
 
 - [Introduction](#introduction)
   - [Contributing](#contributing)
