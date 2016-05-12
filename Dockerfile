@@ -1,4 +1,4 @@
-FROM sameersbn/ubuntu:14.04.20160321
+FROM sameersbn/ubuntu:14.04.20160504
 MAINTAINER sameer@damagehead.com
 
 ENV OPENFIRE_VERSION=4.0.2 \
