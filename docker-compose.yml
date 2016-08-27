@@ -1,5 +1,5 @@
 Openfire:
-  image: sameersbn/openfire:3.10.3-14
+  image: sameersbn/openfire:3.10.3-15
   ports:
     - "9090:9090"
     - "5222:5222"
