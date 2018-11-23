@@ -1,8 +1,20 @@
-Openfire:
-  image: sameersbn/openfire:3.10.3-19
-  ports:
-    - "9090:9090"
-    - "5222:5222"
-    - "7777:7777"
-  volumes:
-    - /srv/docker/openfire/openfire:/var/lib/openfire
+version: '3'
+services:
+  openfire:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: pcmagas/openfire:4.2.3-ubuntu
+    ports:
+      - "9090:9090"
+      - "9091:9091"
+      - "7777:7777"
+      - "7443:7443"
+      - "7070:7070"
+      - "5222:5222"
+      - "5223:5223"
+      - "5229:5229"
+      - "3478:3478"
+      - "3479:3479"
+    volumes:
+      - /volumes/openfire/openfire:/var/lib/openfire
